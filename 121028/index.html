@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html lang="ko-kr">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GIT GUIDE</title>
+		<style type="text/css">
+			article { padding:10px 0; }
+			body,html { margin:0; width:100%; height:100%; background:#666; color:#fff; font:100%/1.5 malgun Gothic,dotum,gulim,verdana,arial,sans-serif; overflow-x:hidden; }
+			#sideNavBox { position:fixed; right:30px; top:30px; background:#fff; -webkit-transition: all 1s; -moz-transition: all 1s; transition:all 1s; }
+			.invisible { right:-130px !important; }
+			#sideNav { padding:0; position:relative; z-index:3; }
+			#sideNav li { list-style: none; padding:0;}
+			#sideNav li a { display:block; padding:5px 15px; color:#666; text-decoration: none; }
+			#sideNav li a:hover { background: #666; color:#fff; }
+			#contents article h2 { -webkit-transition: all 2s; -moz-transition: all 2s; transition:all 2s; }
+			#contents article:nth-child(2n-1) { background:#ff9000; color:#fff; }
+			#contents article:nth-child(2n) { background:#4792bd; }
+			#contents article:nth-child(2n-1):target h2 { color:#4792bd; }
+			#contents article:nth-child(2n):target h2 { color:#ff9000; }
+			.a-center { text-align: center; }
+			.exam { width:20%; margin:0 auto; text-align: left; border:1px solid #fff; }
+			.exam.long { width:35%; }
+			.exam.vLong { width:45%; }
+			@media all and (max-device-width:320px) { /* 모바일 대응 */
+				.exam { width:100% !important; }
+			}
+			.exam.list li { border-bottom:0; }
+			.exam li { border-bottom:1px solid #fff; padding:4px 0 4px 15px; display: block;}
+			.exam ol { padding:0; margin:0; }
+			.func { color:#ff69f3}
+			.var { color:#4eea87 }
+			a.var { color:#695fd7; text-decoration: none; }
+			.warning { color:#ff2929 }
+			.exit { float:right; border:0; padding:0; margin:1px 5px 0 0; background: none; color:#666; cursor: pointer; }
+			.info { position:absolute; left:0; top:0; padding-top:20px; padding-left:15px; background:#fff; color:#666; z-index:999; cursor:pointer; }
+			.info:hover { background:#666; color:#fff; } }
+		</style>
+	</head>
+	<body>
+	<div id="wrap">
+		<div id="sideNavBox">
+			<button class="exit">x</button>
+			<ul id="sideNav"></ul>
+		</div>
+		<section id="contents">
+			<article id="git_01" class="a-center">
+				<h1>쉽고 빠르게 배울 수 있는 git &amp; git-hub 완벽 가이드</h1>
+				<h2>GIT이란?</h2>
+				<p>GIT이란 "분산형버젼관리시스템"이다.</p>
+				<p>SVN과는 다르게 중앙서버가 아닌 로컬에서 관리한다.</p>
+				<p>SNS서비스인 Git-hub와 함께하면 시너지 효과는 한 3985배쯤 된다.</p>
+				<p>GIT 패키지 설치는 각자.</p>
+			</article>
+			<article id="git_02" class="a-center">
+				<h2>GIT 저장소 추가하기</h2>
+				<div class="exam">
+					<ol>
+						<li>1. <span class="var">mkdir</span> my_list</li>
+						<li>2. <span class="var">cd</span> my_list</li>
+						<li>3. <span class="var">git init</span></li>
+					</ol>
+				</div>
+				<p>어때요? 참 쉽죠? 생각보다 git 저장소 추가는 쉽습니다.</p>
+			</article>
+			<article id="git_03" class="a-center">
+				<h2>GIT 유저설정</h2>
+				<p class="warning">누가 커밋했는지, 계정정도는 알고 있어야죠?</p>
+				<div class="exam long">
+					<ol>
+						<li>1. <span class="var">git</span> config --global user.name &lt;"my_name"&gt;</li>
+						<li>2. <span class="var">git</span> config --global user.email &lt;"my_email@email.com"&gt;</li>
+						<li>3. <span class="var">git</span> config --global color.ui auto</li>
+					</ol>
+				</div>
+				<p>&lt;" "&gt;사이에는 자신의 고유식별정보를 넣으면 된다.</p>
+			</article>
+			<article id="git_04" class="a-center">
+				<h2>GIT의 여러 명령어들</h2>
+				<h3>저장소(branch)관련 명령어</h3>
+					<p class="var">git branch</p>
+					<p>현재까지 생성한 branch와 내 현재 branch가 어디인지를 알려준다.</p>
+					<p class="var">git branch add branch_name</p>
+					<p>branch를 생성한다.</p>
+					<p class="var">git branch -d branch_name</p>
+					<p>branch를 삭제한다.</p>
+				<h3>파일 추가하기</h3>
+					<p class="var">git add file_name OR folder_name</p>
+					<p>git의 INDEX에 파일을 임의로 추가해둔다. (아직 커밋된게 아님)</p>
+					<p class="var">git commit -a -m "message blar blar blar"</p>
+					<p>git의 HEAD에 파일을 추가한다.</p>
+				<h3>체크아웃 받기</h3>
+					<p class="var">git checkout -b branch_name</p>
+					<p>branch의 생성과 동시에 체크아웃을 받습니다.</p>
+					<p class="var">git checkout master</p>
+					<p>다시 돌아가 볼까요?</p>
+				<h3>원격 저장소</h3>
+					<p class="var">git remote add origin https://github.com/user_name/user_directory.git</p>
+					<p>git에 원격저장소를 등록해둡니다.</p>
+					<p class="var">git push origin &lt;branch name&gt;</p>
+					<p>저장소를 원격저장소로 보냅니다.</p>
+			</article>
+			<article id="git_05" class="a-center">
+				<h1>무얼 망설이고 있습니까? 해봅시다.</h1>
+				<h2>GIT 실습</h2>
+				<h3>셋팅</h3>
+				<p><a href="http://git-scm.com/download/mac" class="var" target="_blank">GIT SETUP FOR MAC</a></p>
+				<p><a href="http://git-scm.com/download/linux" class="var" target="_blank">GIT SETUP FOR LINUX</a></p>
+				<p><a href="http://git-scm.com/download/win" class="var" target="_blank">GIT SETUP FOR WINDOWS</a></p>
+				<h3>터미널 구성</h3>
+				<div class="exam long">
+					<ol>
+						<li>1. <span class="var">mkdir</span> radpotato</li> <!--new directory add-->
+						<li>2. <span class="var">cd</span> radpotato</li> <!--directory move-->
+						<li>3. <span class="var">git init</span></li> <!--git setting-->
+						<li>4. <span class="var">git config --global user.name</span> "radpotato"</li> <!--radpotato user setting-->
+						<li>5. <span class="var">git config --global user.email</span> "apes0113@nate.com"</li>
+						<li>6. <span class="var">git config --global color.ui</span> auto</li><!--color.ui setting(result color)-->
+					</ol>
+				</div>
+				<h3>git-hub 설정</h3>
+				<div class="exam vLong">
+					<ol>
+						<li>1. <a href="https://github.com" class="var" target="_blank">github.com</a>에 접속</li>
+						<li>2. 우측 상단 <span class="var">signup and pricing</span> 클릭 후 $0 프리버젼 선택</li>
+						<li>3. user name, Email Address, password, confirm password 각각 입력후 회원가입</li>
+						<li>4. email 확인메일 확인 (안하면 접속 불가)</li>
+						<li>5. github 레파지토리 추가 </li>
+						<li>
+							<dl>
+								<dt>6. git - github 접속</dt>
+								<dd class="var">git remote add origin https://github.com/apes0113/git-study.git</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt>7. github에 파일 전송</dt>
+								<dd class="var">git push -u origin master</dd>
+							</dl>
+						</li>
+					</ol>
+				</div>
+			</article>
+		</section>
+	</div>
+	<script type="text/javascript" src="../common_js/common.js"></script>
+	<script type="text/javascript">
+		var h2s = ctn('h2','contents'),
+			nav = cid('sideNav'),
+			liNode = document.createElement('li'),
+			aNode = document.createElement('a'),
+			intro = document.createElement('div'),
+			i;
+		for(i = 0; i < h2s.length; i++) {
+			var id = h2s[i].parentNode.getAttribute('id'),
+				value = h2s[i].textContent,
+				liNode = document.createElement('li'),
+				aNode = document.createElement('a');
+			aNode.setAttribute('href','#'+id);
+			aNode.textContent = value;
+			liNode.appendChild(aNode);
+			nav.appendChild(liNode);
+		}
+		var exitBtn = ccn('exit','sideNavBox'),
+			sideNavBox = cid('sideNavBox');
+		exitBtn[0].onclick = function() {
+			this.parentNode.className = "invisible";
+			intro.className = "info";
+			intro.textContent = "다 시 열 기";
+			intro.style.width = this.parentNode.offsetWidth/5+"px";
+			intro.style.paddingRight = this.parentNode.offsetWidth - this.parentNode.offsetWidth/5 - 15 + "px";
+			intro.style.height = this.parentNode.offsetHeight - 20 +"px";
+			intro.onclick = function() {
+				this.parentNode.removeAttribute('class');
+				this.parentNode.removeChild(intro);
+			}
+			this.parentNode.appendChild(intro);
+		}
+	</script>
+	</body>
+</html>
